@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quy Trình Chuẩn Bị Cà Phê Phin</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Lexend', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e8f4f8 100%);
+            color: #333;
+            line-height: 1.6;
+            padding: 20px 10px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 167, 212, 0.15);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #00a7d4 0%, #0088b3 100%);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .content {
+            padding: 30px 20px;
+        }
+
+        .section {
+            margin-bottom: 35px;
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 20px;
+            font-weight: 600;
+            color: #00a7d4;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #00a7d4;
+        }
+
+        .section-title .icon {
+            font-size: 24px;
+        }
+
+        .info-box {
+            background: linear-gradient(135deg, #e8f9fd 0%, #d4f1f9 100%);
+            border-left: 5px solid #00a7d4;
+            padding: 15px 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+            box-shadow: 0 3px 10px rgba(0, 167, 212, 0.1);
+        }
+
+        .info-box p {
+            margin: 0;
+            font-style: italic;
+            color: #006b8f;
+        }
+
+        .warning-box {
+            background: linear-gradient(135deg, #fff4e6 0%, #ffe8cc 100%);
+            border-left: 5px solid #ff9800;
+            padding: 15px 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+            box-shadow: 0 3px 10px rgba(255, 152, 0, 0.1);
+        }
+
+        .warning-box .warning-title {
+            font-weight: 600;
+            color: #e65100;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .warning-box ul {
+            margin-left: 20px;
+            color: #e65100;
+        }
+
+        .warning-box li {
+            margin: 8px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+        }
+
+        th {
+            background: #00a7d4;
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 15px;
+        }
+
+        td {
+            padding: 15px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        tr:hover {
+            background: #f8fcfd;
+        }
+
+        .process-steps {
+            counter-reset: step-counter;
+        }
+
+        .step {
+            background: white;
+            border: 2px solid #e0f4f9;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 15px 0;
+            position: relative;
+            padding-left: 70px;
+            transition: all 0.3s ease;
+        }
+
+        .step:hover {
+            border-color: #00a7d4;
+            box-shadow: 0 5px 20px rgba(0, 167, 212, 0.15);
+            transform: translateX(5px);
+        }
+
+        .step::before {
+            counter-increment: step-counter;
+            content: counter(step-counter);
+            position: absolute;
+            left: 20px;
+            top: 20px;
+            background: linear-gradient(135deg, #00a7d4 0%, #0088b3 100%);
+            color: white;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 18px;
+            box-shadow: 0 3px 10px rgba(0, 167, 212, 0.3);
+        }
+
+        .step-action {
+            font-weight: 600;
+            color: #00a7d4;
+            margin-bottom: 5px;
+            font-size: 16px;
+        }
+
+        .step-purpose {
+            color: #666;
+            font-size: 14px;
+        }
+
+        .ratio-info {
+            background: linear-gradient(135deg, #00a7d4 0%, #0088b3 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 12px;
+            margin: 15px 0;
+            text-align: center;
+            font-size: 16px;
+            font-weight: 500;
+            box-shadow: 0 5px 15px rgba(0, 167, 212, 0.3);
+        }
+
+        .dosage-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 15px 0;
+        }
+
+        .dosage-item {
+            background: white;
+            border: 2px solid #00a7d4;
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .dosage-label {
+            font-weight: 600;
+            color: #00a7d4;
+            margin-bottom: 5px;
+        }
+
+        .dosage-value {
+            font-size: 24px;
+            font-weight: 700;
+            color: #333;
+        }
+
+        .suggestion-box {
+            background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+            border-left: 5px solid #4caf50;
+            padding: 15px 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+            font-size: 16px;
+            color: #2e7d32;
+            font-style: italic;
+        }
+
+        .points-box {
+            background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%);
+            border-left: 5px solid #ff9800;
+            padding: 15px 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+        }
+
+        .points-box ul {
+            margin-left: 20px;
+            color: #e65100;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 10px 5px;
+            }
+
+            .container {
+                border-radius: 15px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            .content {
+                padding: 20px 15px;
+            }
+
+            .section-title {
+                font-size: 18px;
+            }
+
+            .step {
+                padding: 15px 15px 15px 60px;
+            }
+
+            .step::before {
+                left: 15px;
+                top: 15px;
+                width: 30px;
+                height: 30px;
+                font-size: 16px;
+            }
+
+            table {
+                font-size: 14px;
+            }
+
+            th, td {
+                padding: 10px;
+            }
+
+            .dosage-list {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 20px;
+            }
+
+            .section-title {
+                font-size: 16px;
+            }
+
+            th, td {
+                padding: 8px;
+                font-size: 13px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>QUY TRÌNH CHUẨN BỊ CÀ PHÊ PHIN</h1>
+        </div>
+
+        <div class="content">
+            <!-- Section 1: Thời gian chuẩn bị -->
+            <div class="section">
+                <div class="section-title">
+                    <span class="icon">🕐</span>
+                    <span>1. THỜI GIAN CHUẨN BỊ</span>
+                </div>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Chi nhánh</th>
+                            <th>Thời gian chuẩn bị</th>
+                            <th>Ghi chú</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>CN 2 – CN 3 – CN 4</strong></td>
+                            <td>Tối hôm trước lúc <strong>21:00</strong></td>
+                            <td>Pha sẵn 1 phin cà phê, bảo quản trong bình giữ nhiệt cho ca sáng</td>
+                        </tr>
+                        <tr>
+                            <td><strong>CN 1</strong></td>
+                            <td><strong>05:00 sáng</strong></td>
+                            <td>Pha trực tiếp vì mở cửa sớm (06:00)</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="info-box">
+                    <p><strong>🔸 Mục đích:</strong> Sáng mở cửa có sẵn cà phê thơm, không trễ phục vụ khách đầu tiên.</p>
+                </div>
+            </div>
+
+            <!-- Section 2: Quy trình chuẩn bị -->
+            <div class="section">
+                <div class="section-title">
+                    <span class="icon">⚙️</span>
+                    <span>2. QUY TRÌNH CHUẨN BỊ CÀ PHÊ PHIN</span>
+                </div>
+
+                <div class="ratio-info">
+                    Tỷ lệ pha: Bột cà phê phin : Nước ủ : Nước pha = 1 : 1 : 3
+                </div>
+
+                <p style="font-weight: 600; color: #00a7d4; margin: 20px 0 10px 0;">Định lượng có thể pha:</p>
+                
+                <div class="dosage-list">
+                    <div class="dosage-item">
+                        <div class="dosage-label">Tối thiểu</div>
+                        <div class="dosage-value">100g/phin</div>
+                        <div style="font-size: 12px; color: #666; margin-top: 5px;">nếu chỉ còn từ 100g</div>
+                    </div>
+                    <div class="dosage-item">
+                        <div class="dosage-label">Tối đa</div>
+                        <div class="dosage-value">150g/phin</div>
+                        <div style="font-size: 12px; color: #666; margin-top: 5px;">định lượng tiêu chuẩn</div>
+                    </div>
+                </div>
+
+                <p style="font-weight: 600; color: #00a7d4; margin: 20px 0 10px 0;">Các bước pha chế:</p>
+                
+                <div class="process-steps">
+                    <div class="step">
+                        <div class="step-action">Dùng 100ml nước sôi tráng phin</div>
+                        <div class="step-purpose">→ Làm nóng & sạch phin</div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-action">Cho 150g bột cà phê vào phin</div>
+                        <div class="step-purpose">→ Đảm bảo đủ đậm</div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-action">Rót 150ml nước sôi, ngập đều mặt bột, ủ 10 phút</div>
+                        <div class="step-purpose">→ Chiết xuất đậm vị</div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-action">Sau khi ủ, rót thêm 450ml nước sôi</div>
+                        <div class="step-purpose">→ Pha cà phê chuẩn đậm</div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-action">Thu được cốt cà phê, cho vào bình giữ nhiệt</div>
+                        <div class="step-purpose">→ Giữ hương & nhiệt</div>
+                    </div>
+                </div>
+
+                <div class="warning-box">
+                    <div class="warning-title">⚠️ LƯU Ý:</div>
+                    <ul>
+                        <li>Không trộn cà phê tối qua và sáng nay.</li>
+                        <li>Cà phê cũ → cho vào chai ủ lạnh.</li>
+                        <li>Không đổ chung cà phê mới và cũ vào bình giữ nhiệt (tránh lên men, mất mùi).</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Section 3: Bảo quản & sử dụng -->
+            <div class="section">
+                <div class="section-title">
+                    <span class="icon">🧊</span>
+                    <span>3. BẢO QUẢN & SỬ DỤNG</span>
+                </div>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Loại món</th>
+                            <th>Loại cà phê sử dụng</th>
+                            <th>Ghi chú</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Phin Đá</strong></td>
+                            <td>Cà phê nóng trong bình giữ nhiệt</td>
+                            <td>Thơm & tươi nhất</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Phin Sữa / Phin Muối / Phin Xĩu</strong></td>
+                            <td>Cà phê ủ lạnh qua đêm</td>
+                            <td>Đậm hơn, hòa sữa tốt hơn</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="info-box">
+                    <p><strong>💡</strong> Tất cả món cà phê phin đều được đánh bọt bằng máy cầm tay. Đánh vừa phải – không cần quá nhiều bọt.</p>
+                </div>
+            </div>
+
+            <!-- Section 4: Gợi ý bán hàng -->
+            <div class="section">
+                <div class="section-title">
+                    <span class="icon">💬</span>
+                    <span>4. GỢI Ý BÁN HÀNG</span>
+                </div>
+
+                <div class="suggestion-box">
+                    "Dạ, Bên em mới có cà phê Phin anh/chị có muốn dùng thử không ạ!"
+                </div>
+            </div>
+
+            <!-- Section 5: Tích điểm & hệ thống -->
+            <div class="section">
+                <div class="section-title">
+                    <span class="icon">🎁</span>
+                    <span>5. TÍCH ĐIỂM & HỆ THỐNG</span>
+                </div>
+
+                <div class="points-box">
+                    <ul>
+                        <li>Cà phê phin vẫn tích điểm bình thường</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
