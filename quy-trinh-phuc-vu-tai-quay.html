@@ -1,0 +1,588 @@
+import React, { useState } from 'react';
+import { Coffee, Users, Clock, CheckCircle, AlertTriangle, FileText, Printer } from 'lucide-react';
+
+const SOPServiceProcess = () => {
+  const [checkedItems, setCheckedItems] = useState({});
+
+  const toggleCheck = (section, index) => {
+    const key = `${section}-${index}`;
+    setCheckedItems(prev => ({
+      ...prev,
+      [key]: !prev[key]
+    }));
+  };
+
+  const printSOP = () => {
+    window.print();
+  };
+
+  return (
+    <div className="max-w-5xl mx-auto p-8 bg-white">
+      {/* Header */}
+      <div className="border-b-4 border-amber-600 pb-6 mb-8">
+        <div className="flex items-center justify-between mb-4">
+          <div className="flex items-center gap-3">
+            <Coffee className="w-12 h-12 text-amber-600" />
+            <div>
+              <h1 className="text-3xl font-bold text-gray-800">MAGASIN COFFEE</h1>
+              <p className="text-sm text-gray-500">Standard Operating Procedure</p>
+            </div>
+          </div>
+          <button 
+            onClick={printSOP}
+            className="flex items-center gap-2 px-4 py-2 bg-amber-600 text-white rounded-lg hover:bg-amber-700 print:hidden"
+          >
+            <Printer className="w-4 h-4" />
+            In SOP
+          </button>
+        </div>
+        
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6 text-sm">
+          <div>
+            <p className="font-semibold text-gray-600">Mã SOP:</p>
+            <p className="text-lg font-bold text-amber-600">SOP-BC03</p>
+          </div>
+          <div>
+            <p className="font-semibold text-gray-600">Phiên bản:</p>
+            <p className="text-lg font-bold">V1.0</p>
+          </div>
+          <div>
+            <p className="font-semibold text-gray-600">Ngày ban hành:</p>
+            <p className="text-lg font-bold">10/11/2025</p>
+          </div>
+          <div>
+            <p className="font-semibold text-gray-600">Áp dụng:</p>
+            <p className="text-lg font-bold">Tất cả chi nhánh</p>
+          </div>
+        </div>
+      </div>
+
+      {/* Tên SOP */}
+      <div className="bg-amber-50 p-6 rounded-lg mb-8">
+        <h2 className="text-2xl font-bold text-gray-800 mb-2">QUY TRÌNH PHỤC VỤ TẠI QUẦY</h2>
+        <p className="text-gray-600">Quy trình chuẩn hóa từ tiếp nhận order đến giao đồ uống cho khách hàng</p>
+      </div>
+
+      {/* Mục đích & Phạm vi */}
+      <section className="mb-8">
+        <h3 className="text-xl font-bold text-gray-800 mb-4 flex items-center gap-2">
+          <FileText className="w-6 h-6 text-amber-600" />
+          MỤC ĐÍCH VÀ PHẠM VI ÁP DỤNG
+        </h3>
+        <div className="grid md:grid-cols-3 gap-4">
+          <div className="bg-blue-50 p-4 rounded-lg">
+            <p className="font-semibold text-blue-900 mb-2">Mục đích</p>
+            <p className="text-sm text-blue-800">Đảm bảo mọi order được phục vụ nhanh chóng, chính xác và thân thiện. Giảm thời gian chờ và hạn chế sai sót.</p>
+          </div>
+          <div className="bg-green-50 p-4 rounded-lg">
+            <p className="font-semibold text-green-900 mb-2">Phạm vi áp dụng</p>
+            <p className="text-sm text-green-800">Barista, Thu ngân, Nhân viên phục vụ tại quầy pha chế</p>
+          </div>
+          <div className="bg-purple-50 p-4 rounded-lg">
+            <p className="font-semibold text-purple-900 mb-2">Kết quả mong đợi</p>
+            <p className="text-sm text-purple-800">Thời gian phục vụ 3 phút mỗi order, tỷ lệ sai sót 2%, khách hàng hài lòng 4.5/5</p>
+          </div>
+        </div>
+      </section>
+
+      {/* Trách nhiệm */}
+      <section className="mb-8">
+        <h3 className="text-xl font-bold text-gray-800 mb-4 flex items-center gap-2">
+          <Users className="w-6 h-6 text-amber-600" />
+          TRÁCH NHIỆM
+        </h3>
+        <div className="grid md:grid-cols-3 gap-4">
+          <div className="border-l-4 border-amber-600 pl-4">
+            <p className="font-semibold text-gray-800">Người thực hiện chính</p>
+            <p className="text-sm text-gray-600">Barista ca sáng/chiều/tối</p>
+          </div>
+          <div className="border-l-4 border-blue-600 pl-4">
+            <p className="font-semibold text-gray-800">Người giám sát</p>
+            <p className="text-sm text-gray-600">Trưởng ca</p>
+          </div>
+          <div className="border-l-4 border-green-600 pl-4">
+            <p className="font-semibold text-gray-800">Người kiểm tra</p>
+            <p className="text-sm text-gray-600">Quản lý Vận hành (hàng tuần)</p>
+          </div>
+        </div>
+      </section>
+
+      {/* Dụng cụ cần thiết */}
+      <section className="mb-8">
+        <h3 className="text-xl font-bold text-gray-800 mb-4">DỤNG CỤ VÀ NGUYÊN LIỆU CẦN THIẾT</h3>
+        <div className="bg-gray-50 p-6 rounded-lg">
+          <div className="grid md:grid-cols-2 gap-6">
+            <div>
+              <p className="font-semibold text-gray-800 mb-3">Dụng cụ tại quầy:</p>
+              <ul className="space-y-2 text-sm text-gray-700">
+                <li className="flex items-start gap-2">
+                  <span className="text-amber-600">•</span>
+                  <span>Máy POS/tablet order đã đăng nhập</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-amber-600">•</span>
+                  <span>Chuông/màn hình thông báo order</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-amber-600">•</span>
+                  <span>Khay/giá để đồ uống chờ giao</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-amber-600">•</span>
+                  <span>Viết/bút đánh dấu ly (nếu cần)</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-amber-600">•</span>
+                  <span>Khăn lau quầy, găng tay nhựa</span>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <p className="font-semibold text-gray-800 mb-3">Công cụ hỗ trợ:</p>
+              <ul className="space-y-2 text-sm text-gray-700">
+                <li className="flex items-start gap-2">
+                  <span className="text-amber-600">•</span>
+                  <span>Bảng công thức pha chế (dán tường)</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-amber-600">•</span>
+                  <span>Checklist chuẩn bị ca (SOP-BC01)</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-amber-600">•</span>
+                  <span>Sổ ghi chú sự cố/khiếu nại</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-amber-600">•</span>
+                  <span>QR code liên hệ trưởng ca khẩn cấp</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Quy trình thực hiện */}
+      <section className="mb-8">
+        <h3 className="text-xl font-bold text-gray-800 mb-4 flex items-center gap-2">
+          <Clock className="w-6 h-6 text-amber-600" />
+          QUY TRÌNH THỰC HIỆN CHI TIẾT
+        </h3>
+
+        {/* Bước 1 */}
+        <div className="mb-6 border-l-4 border-amber-600 bg-amber-50 p-6 rounded-r-lg">
+          <div className="flex items-center justify-between mb-4">
+            <h4 className="text-lg font-bold text-gray-800">BƯỚC 1: TIẾP NHẬN ORDER TỪ HỆ THỐNG</h4>
+            <span className="bg-amber-600 text-white px-3 py-1 rounded-full text-sm font-semibold">
+              10-15 giây
+            </span>
+          </div>
+          
+          <div className="space-y-4">
+            <div>
+              <p className="font-semibold text-gray-800 mb-2">Cách làm chi tiết:</p>
+              <ol className="space-y-3 text-gray-700">
+                <li className="flex gap-3">
+                  <span className="font-bold text-amber-600 min-w-[24px]">1.</span>
+                  <span>Khi có chuông báo hoặc màn hình hiện order mới, <strong>dừng ngay công việc phụ</strong> (lau chùi, sắp xếp)</span>
+                </li>
+                <li className="flex gap-3">
+                  <span className="font-bold text-amber-600 min-w-[24px]">2.</span>
+                  <span>Đọc kỹ order trên POS/tablet: <strong>tên món - size - topping - ghi chú đặc biệt</strong></span>
+                </li>
+                <li className="flex gap-3">
+                  <span className="font-bold text-amber-600 min-w-[24px]">3.</span>
+                  <span>Xác nhận bằng cách <strong>nhấn Đã nhận</strong> hoặc chuyển trạng thái sang Đang làm</span>
+                </li>
+                <li className="flex gap-3">
+                  <span className="font-bold text-amber-600 min-w-[24px]">4.</span>
+                  <span>Nếu có nhiều order cùng lúc: <strong>ưu tiên order cũ nhất trước</strong>, trừ khi có order VIP/khẩn cấp</span>
+                </li>
+              </ol>
+            </div>
+
+            <div className="bg-white p-4 rounded-lg border border-amber-200">
+              <p className="font-semibold text-gray-800 mb-2">✅ Tiêu chuẩn đạt:</p>
+              <ul className="text-sm text-gray-700 space-y-1">
+                <li>• Nhận order trong vòng 15 giây kể từ lúc chuông báo</li>
+                <li>• Đọc chính xác 100% thông tin order (tên món, size, topping)</li>
+                <li>• Không bỏ sót order nào trong hàng đợi</li>
+              </ul>
+            </div>
+
+            <div className="bg-red-50 p-4 rounded-lg border border-red-200">
+              <p className="font-semibold text-red-800 mb-2">⚠️ Lưu ý quan trọng:</p>
+              <ul className="text-sm text-red-700 space-y-1">
+                <li>• <strong>KHÔNG</strong> để order chờ quá 30 giây mà không xác nhận</li>
+                <li>• <strong>KHÔNG</strong> đọc sai tên món (nhầm lẫn giữa các loại cà phê tương tự)</li>
+                <li>• Nếu order quá nhiều (từ 5 cốc trở lên cùng lúc): <strong>gọi trưởng ca hỗ trợ ngay</strong></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        {/* Bước 2 */}
+        <div className="mb-6 border-l-4 border-blue-600 bg-blue-50 p-6 rounded-r-lg">
+          <div className="flex items-center justify-between mb-4">
+            <h4 className="text-lg font-bold text-gray-800">BƯỚC 2: PHA CHẾ THEO CÔNG THỨC CHUẨN</h4>
+            <span className="bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-semibold">
+              1.5-2.5 phút
+            </span>
+          </div>
+          
+          <div className="space-y-4">
+            <div>
+              <p className="font-semibold text-gray-800 mb-2">Cách làm chi tiết:</p>
+              <ol className="space-y-3 text-gray-700">
+                <li className="flex gap-3">
+                  <span className="font-bold text-blue-600 min-w-[24px]">1.</span>
+                  <span>Chuẩn bị ly đúng size theo order (S/M/L) và <strong>ghi số order/tên khách</strong> lên ly bằng bút</span>
+                </li>
+                <li className="flex gap-3">
+                  <span className="font-bold text-blue-600 min-w-[24px]">2.</span>
+                  <span>Pha chế <strong>chính xác 100% theo SOP-BC02</strong> (công thức pha chế chuẩn)</span>
+                </li>
+                <li className="flex gap-3">
+                  <span className="font-bold text-blue-600 min-w-[24px]">3.</span>
+                  <span>Sử dụng <strong>cân điện tử và đồng hồ bấm giờ</strong> (không làm theo cảm tính)</span>
+                </li>
+                <li className="flex gap-3">
+                  <span className="font-bold text-blue-600 min-w-[24px]">4.</span>
+                  <span>Kiểm tra lại topping trước khi đậy nắp: <strong>trân châu, thạch, kem cheese...</strong></span>
+                </li>
+                <li className="flex gap-3">
+                  <span className="font-bold text-blue-600 min-w-[24px]">5.</span>
+                  <span>Đậy nắp chặt, lau sạch ly bên ngoài (không còn vết ướt/dính)</span>
+                </li>
+              </ol>
+            </div>
+
+            <div className="bg-white p-4 rounded-lg border border-blue-200">
+              <p className="font-semibold text-gray-800 mb-2">✅ Tiêu chuẩn đạt:</p>
+              <ul className="text-sm text-gray-700 space-y-1">
+                <li>• Đúng công thức (đã được training và test pass)</li>
+                <li>• Đúng định lượng: ±2g cho nguyên liệu chính, ±5ml cho liquid</li>
+                <li>• Nhiệt độ đồ nóng: 60-70°C | Đồ lạnh: có đá đầy đủ</li>
+                <li>• Ly sạch sẽ, không dính vết nguyên liệu bên ngoài</li>
+                <li>• Hoàn thành trong 2.5 phút (tính từ lúc nhận order)</li>
+              </ul>
+            </div>
+
+            <div className="bg-red-50 p-4 rounded-lg border border-red-200">
+              <p className="font-semibold text-red-800 mb-2">⚠️ Lưu ý quan trọng:</p>
+              <ul className="text-sm text-red-700 space-y-1">
+                <li>• <strong>KHÔNG</strong> bỏ qua bước cân đo (dù đã thuộc công thức)</li>
+                <li>• <strong>KHÔNG</strong> tự ý thay đổi công thức hoặc tự sáng tạo</li>
+                <li>• <strong>KHÔNG</strong> để đồ uống đã pha chế quá 3 phút mới giao (chất lượng giảm)</li>
+                <li>• Nếu pha sai: <strong>làm lại ngay</strong>, không giao cho khách</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        {/* Bước 3 */}
+        <div className="mb-6 border-l-4 border-green-600 bg-green-50 p-6 rounded-r-lg">
+          <div className="flex items-center justify-between mb-4">
+            <h4 className="text-lg font-bold text-gray-800">BƯỚC 3: GIAO ĐỒ UỐNG CHO KHÁCH HÀNG</h4>
+            <span className="bg-green-600 text-white px-3 py-1 rounded-full text-sm font-semibold">
+              20-30 giây
+            </span>
+          </div>
+          
+          <div className="space-y-4">
+            <div>
+              <p className="font-semibold text-gray-800 mb-2">Cách làm chi tiết:</p>
+              <ol className="space-y-3 text-gray-700">
+                <li className="flex gap-3">
+                  <span className="font-bold text-green-600 min-w-[24px]">1.</span>
+                  <span>Đặt đồ uống lên <strong>khay/quầy giao hàng</strong>, kiểm tra lần cuối: đủ ống hút, khăn giấy, nắp đậy chặt</span>
+                </li>
+                <li className="flex gap-3">
+                  <span className="font-bold text-green-600 min-w-[24px]">2.</span>
+                  <span>Gọi tên/số order: <strong>Anh/chị [tên] ơi, order [tên món] của anh/chị ạ!</strong></span>
+                </li>
+                <li className="flex gap-3">
+                  <span className="font-bold text-green-600 min-w-[24px]">3.</span>
+                  <span><strong>Mỉm cười + giao tận tay</strong> khách hàng (không để khách phải với lấy)</span>
+                </li>
+                <li className="flex gap-3">
+                  <span className="font-bold text-green-600 min-w-[24px]">4.</span>
+                  <span>Nói: <strong>Anh/chị dùng ngon miệng nhé! Có vấn đề gì báo em ngay ạ</strong></span>
+                </li>
+                <li className="flex gap-3">
+                  <span className="font-bold text-green-600 min-w-[24px]">5.</span>
+                  <span>Chuyển trạng thái order sang <strong>Hoàn thành</strong> trên POS</span>
+                </li>
+              </ol>
+            </div>
+
+            <div className="bg-white p-4 rounded-lg border border-green-200">
+              <p className="font-semibold text-gray-800 mb-2">✅ Tiêu chuẩn đạt:</p>
+              <ul className="text-sm text-gray-700 space-y-1">
+                <li>• Gọi tên khách đúng (nếu có tên trên order)</li>
+                <li>• Giao tận tay + mỉm cười + nhìn vào mắt khách</li>
+                <li>• Không giao nhầm đồ cho khách khác</li>
+                <li>• Cập nhật trạng thái order đúng lúc</li>
+              </ul>
+            </div>
+
+            <div className="bg-red-50 p-4 rounded-lg border border-red-200">
+              <p className="font-semibold text-red-800 mb-2">⚠️ Lưu ý quan trọng:</p>
+              <ul className="text-sm text-red-700 space-y-1">
+                <li>• <strong>KHÔNG</strong> gọi khách bằng order số X (không thân thiện)</li>
+                <li>• <strong>KHÔNG</strong> để ly trực tiếp lên quầy mà không gọi khách (khách không biết)</li>
+                <li>• <strong>KHÔNG</strong> quên hỏi lại nếu không chắc chắn đúng khách</li>
+                <li>• Nếu khách phàn nàn ngay: <strong>lắng nghe + xin lỗi + báo trưởng ca</strong> (xem SOP-CASE01)</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        {/* Bước 4 */}
+        <div className="mb-6 border-l-4 border-purple-600 bg-purple-50 p-6 rounded-r-lg">
+          <div className="flex items-center justify-between mb-4">
+            <h4 className="text-lg font-bold text-gray-800">BƯỚC 4: DỌN DẸP VÀ CHUẨN BỊ ORDER TIẾP THEO</h4>
+            <span className="bg-purple-600 text-white px-3 py-1 rounded-full text-sm font-semibold">
+              15-20 giây
+            </span>
+          </div>
+          
+          <div className="space-y-4">
+            <div>
+              <p className="font-semibold text-gray-800 mb-2">Cách làm chi tiết:</p>
+              <ol className="space-y-3 text-gray-700">
+                <li className="flex gap-3">
+                  <span className="font-bold text-purple-600 min-w-[24px]">1.</span>
+                  <span><strong>Lau sạch quầy</strong> ngay sau khi giao (vết nước, vết nguyên liệu)</span>
+                </li>
+                <li className="flex gap-3">
+                  <span className="font-bold text-purple-600 min-w-[24px]">2.</span>
+                  <span><strong>Rửa dụng cụ</strong> đã dùng (shaker, ca đong, muỗng) nếu không còn order chờ</span>
+                </li>
+                <li className="flex gap-3">
+                  <span className="font-bold text-purple-600 min-w-[24px]">3.</span>
+                  <span><strong>Kiểm tra nhanh</strong> nguyên liệu còn đủ không (đá, sữa, topping)</span>
+                </li>
+                <li className="flex gap-3">
+                  <span className="font-bold text-purple-600 min-w-[24px]">4.</span>
+                  <span>Nếu sắp hết: <strong>báo trưởng ca hoặc lấy thêm ngay</strong></span>
+                </li>
+                <li className="flex gap-3">
+                  <span className="font-bold text-purple-600 min-w-[24px]">5.</span>
+                  <span>Sẵn sàng cho order tiếp theo (quay lại Bước 1)</span>
+                </li>
+              </ol>
+            </div>
+
+            <div className="bg-white p-4 rounded-lg border border-purple-200">
+              <p className="font-semibold text-gray-800 mb-2">✅ Tiêu chuẩn đạt:</p>
+              <ul className="text-sm text-gray-700 space-y-1">
+                <li>• Quầy luôn sạch sẽ, không có vết bẩn tồn đọng</li>
+                <li>• Dụng cụ được rửa sạch ngay (không để vào cuối ca)</li>
+                <li>• Nguyên liệu luôn đủ, không để tình trạng thiếu khi order đến</li>
+              </ul>
+            </div>
+
+            <div className="bg-red-50 p-4 rounded-lg border border-red-200">
+              <p className="font-semibold text-red-800 mb-2">⚠️ Lưu ý quan trọng:</p>
+              <ul className="text-sm text-red-700 space-y-1">
+                <li>• <strong>KHÔNG</strong> để dụng cụ bẩn chồng chất (mất thời gian khi có order mới)</li>
+                <li>• <strong>KHÔNG</strong> chờ đến khi hết nguyên liệu mới báo (gây gián đoạn phục vụ)</li>
+                <li>• Nếu giờ cao điểm (nhiều order liên tục): <strong>ưu tiên pha chế, dọn dẹp sau</strong></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Tiêu chuẩn tổng thể */}
+      <section className="mb-8">
+        <h3 className="text-xl font-bold text-gray-800 mb-4 flex items-center gap-2">
+          <CheckCircle className="w-6 h-6 text-amber-600" />
+          TIÊU CHUẨN CHẤT LƯỢNG TỔNG THỂ
+        </h3>
+        <div className="grid md:grid-cols-2 gap-4">
+          <div className="bg-gradient-to-br from-amber-50 to-amber-100 p-6 rounded-lg border-2 border-amber-300">
+            <p className="font-bold text-amber-900 mb-3 text-lg">⏱️ Về thời gian:</p>
+            <ul className="space-y-2 text-sm text-amber-800">
+              <li>• <strong>Tổng thời gian phục vụ:</strong> không quá 3 phút/order (từ nhận đến giao)</li>
+              <li>• <strong>Giờ cao điểm:</strong> không quá 4 phút/order là chấp nhận được</li>
+              <li>• <strong>Order phức tạp:</strong> (nhiều topping) không quá 5 phút</li>
+              <li className="text-red-700 font-semibold">• Nếu vượt quá 5 phút: BẮT BUỘC xin lỗi khách + giải thích</li>
+            </ul>
+          </div>
+
+          <div className="bg-gradient-to-br from-green-50 to-green-100 p-6 rounded-lg border-2 border-green-300">
+            <p className="font-bold text-green-900 mb-3 text-lg">✅ Về chất lượng:</p>
+            <ul className="space-y-2 text-sm text-green-800">
+              <li>• <strong>Tỷ lệ pha chế đúng:</strong> từ 98% trở lên (tối đa 2 cốc sai/100 cốc)</li>
+              <li>• <strong>Tỷ lệ giao đúng khách:</strong> 100% (không được nhầm)</li>
+              <li>• <strong>Hình thức sản phẩm:</strong> Ly sạch, nắp chặt, không đổ</li>
+              <li>• <strong>Thái độ phục vụ:</strong> Mỉm cười, lịch sự, thân thiện</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      {/* Xử lý sai sót */}
+      <section className="mb-8">
+        <h3 className="text-xl font-bold text-gray-800 mb-4 flex items-center gap-2">
+          <AlertTriangle className="w-6 h-6 text-amber-600" />
+          XỬ LÝ SAI SÓT VÀ TÌNH HUỐNG
+        </h3>
+        <div className="overflow-x-auto">
+          <table className="w-full border-collapse border border-gray-300">
+            <thead>
+              <tr className="bg-gray-100">
+                <th className="border border-gray-300 p-3 text-left font-bold">Sai sót thường gặp</th>
+                <th className="border border-gray-300 p-3 text-left font-bold">Nguyên nhân</th>
+                <th className="border border-gray-300 p-3 text-left font-bold">Cách xử lý</th>
+                <th className="border border-gray-300 p-3 text-left font-bold">Người xử lý</th>
+              </tr>
+            </thead>
+            <tbody className="text-sm">
+              <tr>
+                <td className="border border-gray-300 p-3">Pha sai món (nhầm tên)</td>
+                <td className="border border-gray-300 p-3">Đọc order không kỹ</td>
+                <td className="border border-gray-300 p-3">Làm lại ngay + xin lỗi khách + báo trưởng ca</td>
+                <td className="border border-gray-300 p-3">Barista</td>
+              </tr>
+              <tr className="bg-gray-50">
+                <td className="border border-gray-300 p-3">Pha sai size (M thành L)</td>
+                <td className="border border-gray-300 p-3">Không chú ý size trên order</td>
+                <td className="border border-gray-300 p-3">Làm lại đúng size + tặng món sai cho khách (nếu đồng ý)</td>
+                <td className="border border-gray-300 p-3">Barista</td>
+              </tr>
+              <tr>
+                <td className="border border-gray-300 p-3">Quên topping (trân châu, thạch)</td>
+                <td className="border border-gray-300 p-3">Không đọc hết ghi chú order</td>
+                <td className="border border-gray-300 p-3">Thêm topping ngay + xin lỗi (nếu khách chưa nhận)</td>
+                <td className="border border-gray-300 p-3">Barista</td>
+              </tr>
+              <tr className="bg-gray-50">
+                <td className="border border-gray-300 p-3">Giao nhầm đồ cho khách khác</td>
+                <td className="border border-gray-300 p-3">Không xác nhận tên/số order</td>
+                <td className="border border-gray-300 p-3">Xin lỗi cả 2 khách + làm lại món mới cho đúng người</td>
+                <td className="border border-gray-300 p-3">Trưởng ca</td>
+              </tr>
+              <tr>
+                <td className="border border-gray-300 p-3">Khách chờ quá lâu (trên 5 phút)</td>
+                <td className="border border-gray-300 p-3">Quầy quá tải, thiếu nhân sự</td>
+                <td className="border border-gray-300 p-3">Xin lỗi + giải thích + tặng voucher giảm giá lần sau</td>
+                <td className="border border-gray-300 p-3">Trưởng ca</td>
+              </tr>
+              <tr className="bg-gray-50">
+                <td className="border border-gray-300 p-3">Đồ uống bị đổ/rơi</td>
+                <td className="border border-gray-300 p-3">Nắp không chặt, giao không cẩn thận</td>
+                <td className="border border-gray-300 p-3">Làm lại ngay + xin lỗi + lau sạch nếu đổ ra quầy</td>
+                <td className="border border-gray-300 p-3">Barista</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      {/* Checklist */}
+      <section className="mb-8 print:break-before-page">
+        <h3 className="text-xl font-bold text-gray-800 mb-4">CHECKLIST KIỂM TRA CUỐI CA</h3>
+        <div className="bg-gray-50 p-6 rounded-lg border-2 border-gray-300">
+          <p className="text-sm text-gray-600 mb-4">Trưởng ca kiểm tra và ký xác nhận hàng ngày</p>
+          
+          <div className="space-y-3">
+            {[
+              'Tất cả order trong ca đã được phục vụ và đóng trạng thái',
+              'Không có khiếu nại chưa xử lý',
+              'Quầy pha chế sạch sẽ, dụng cụ đã rửa',
+              'Nguyên liệu đã được bổ sung/báo cáo thiếu',
+              'Ghi chép sổ sự cố (nếu có)',
+              'Tỷ lệ sai sót trong ca dưới 2%',
+              'Thời gian phục vụ trung bình dưới 3 phút'
+            ].map((item, idx) => (
+              <div key={idx} className="flex items-start gap-3">
+                <input
+                  type="checkbox"
+                  checked={checkedItems[`checklist-${idx}`] || false}
+                  onChange={() => toggleCheck('checklist', idx)}
+                  className="mt-1 w-5 h-5 text-amber-600 cursor-pointer"
+                />
+                <label className="text-gray-700 cursor-pointer" onClick={() => toggleCheck('checklist', idx)}>
+                  {item}
+                </label>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-6 pt-6 border-t border-gray-300 grid md:grid-cols-3 gap-4">
+            <div>
+              <p className="text-sm font-semibold text-gray-700 mb-2">Người thực hiện:</p>
+              <div className="border-b-2 border-gray-400 pb-1">
+                <p className="text-xs text-gray-500">(Ký tên)</p>
+              </div>
+            </div>
+            <div>
+              <p className="text-sm font-semibold text-gray-700 mb-2">Trưởng ca kiểm tra:</p>
+              <div className="border-b-2 border-gray-400 pb-1">
+                <p className="text-xs text-gray-500">(Ký tên)</p>
+              </div>
+            </div>
+            <div>
+              <p className="text-sm font-semibold text-gray-700 mb-2">Ngày kiểm tra:</p>
+              <div className="border-b-2 border-gray-400 pb-1">
+                <p className="text-xs text-gray-500">(DD/MM/YYYY)</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Phụ lục */}
+      <section className="mb-8">
+        <h3 className="text-xl font-bold text-gray-800 mb-4">PHỤ LỤC</h3>
+        <div className="space-y-4">
+          <div className="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-600">
+            <p className="font-semibold text-blue-900 mb-2">📋 Tài liệu liên quan:</p>
+            <ul className="text-sm text-blue-800 space-y-1">
+              <li>• SOP-BC01: Chuẩn bị quầy trước ca</li>
+              <li>• SOP-BC02: Công thức pha chế tiêu chuẩn</li>
+              <li>• SOP-OR01: Chào khách và tư vấn order</li>
+              <li>• SOP-CASE01: Xử lý khiếu nại cơ bản</li>
+            </ul>
+          </div>
+
+          <div className="bg-green-50 p-4 rounded-lg border-l-4 border-green-600">
+            <p className="font-semibold text-green-900 mb-2">🎥 Video hướng dẫn:</p>
+            <ul className="text-sm text-green-800 space-y-1">
+              <li>• Link QR Code: [Quét để xem video demo đầy đủ]</li>
+              <li>• Thời lượng: 8 phút</li>
+              <li>• Nội dung: Demo thực tế 4 bước phục vụ tại quầy</li>
+            </ul>
+          </div>
+
+          <div className="bg-amber-50 p-4 rounded-lg border-l-4 border-amber-600">
+            <p className="font-semibold text-amber-900 mb-2">📞 Liên hệ khẩn cấp:</p>
+            <ul className="text-sm text-amber-800 space-y-1">
+              <li>• Trưởng ca: [Số điện thoại]</li>
+              <li>• Quản lý vận hành: [Số điện thoại]</li>
+              <li>• Kỹ thuật (sửa máy): [Số điện thoại]</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <div className="mt-12 pt-6 border-t-2 border-gray-300 text-center text-sm text-gray-600">
+        <p className="mb-2">
+          <strong>MAGASIN COFFEE</strong> - Quy trình vận hành chuẩn hóa
+        </p>
+        <p>
+          Tài liệu này là tài sản của công ty. Không được sao chép hoặc phân phối khi chưa có sự cho phép.
+        </p>
+        <p className="mt-2 text-xs text-gray-500">
+          Phiên bản: V1.0 | Ngày ban hành: 10/11/2025 | Trang 1/1
+        </p>
+      </div>
+    </div>
+  );
+};
+
+export default SOPServiceProcess;
