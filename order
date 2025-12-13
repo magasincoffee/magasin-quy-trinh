@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quy Trình Order - Magasin</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f0f8ff;
+            padding: 15px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 5px 20px rgba(0,167,212,0.2);
+            border-top: 5px solid #00a7d4;
+        }
+
+        h1 {
+            text-align: center;
+            color: #00a7d4;
+            margin-bottom: 5px;
+            font-size: 2em;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 25px;
+            font-size: 0.95em;
+        }
+
+        .step {
+            margin-bottom: 18px;
+            padding: 15px;
+            background: #f0f8ff;
+            border-radius: 10px;
+            border-left: 4px solid #00a7d4;
+        }
+
+        .step-number {
+            display: inline-block;
+            width: 32px;
+            height: 32px;
+            background: #00a7d4;
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 32px;
+            font-weight: bold;
+            font-size: 1.1em;
+            margin-right: 10px;
+        }
+
+        .step-title {
+            display: inline-block;
+            font-size: 1.15em;
+            font-weight: bold;
+            color: #00a7d4;
+            vertical-align: middle;
+        }
+
+        .step-content {
+            margin-top: 10px;
+            margin-left: 42px;
+            color: #333;
+            line-height: 1.6;
+            font-size: 0.95em;
+        }
+
+        .dialogue {
+            background: white;
+            padding: 8px 12px;
+            border-radius: 8px;
+            margin: 8px 0;
+            border-left: 3px solid #00a7d4;
+            color: #ff6b35;
+            font-size: 0.9em;
+            font-weight: 700;
+        }
+
+        .sub-step {
+            margin: 8px 0;
+            padding-left: 15px;
+            font-size: 0.9em;
+        }
+
+        .sub-step::before {
+            content: "→";
+            color: #00a7d4;
+            font-weight: bold;
+            margin-right: 8px;
+        }
+
+        .highlight {
+            background: #ffeb3b;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .important {
+            background: #fff9e6;
+            padding: 12px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid #ffc107;
+            color: #d97706;
+            font-weight: 500;
+            font-size: 0.95em;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 1.8em;
+            }
+            .step-content {
+                margin-left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>QUY TRÌNH ORDER</h1>
+        <p class="subtitle">Cửa hàng đồ uống Magasin</p>
+
+        <div class="important">
+            ⭐ LƯU Ý: Chủ động chào khách! Không để khách phải gọi!
+        </div>
+
+        <div class="step">
+            <span class="step-number">1</span>
+            <span class="step-title">Chào Khách</span>
+            <div class="step-content">
+                <p>Khi thấy khách bước vào, nhân viên chủ động chào:</p>
+                <div class="dialogue">
+                    "Magasin xin chào!"
+                </div>
+            </div>
+        </div>
+
+        <div class="step">
+            <span class="step-number">2</span>
+            <span class="step-title">Nhận Order (Đơn Hàng)</span>
+            <div class="step-content">
+                <div class="sub-step">
+                    <span class="highlight">Gửi menu</span> cho khách xem
+                </div>
+                <div class="dialogue">
+                    "Dạ Anh/Chị dùng món gì ạ!"
+                </div>
+                <div class="sub-step">
+                    Nếu khách phân vân, gợi ý:
+                </div>
+                <div class="dialogue">
+                    "Các món ... đang hot tại quán ạ!"
+                </div>
+            </div>
+        </div>
+
+        <div class="step">
+            <span class="step-number">3</span>
+            <span class="step-title">Xác Nhận & Thu Tiền</span>
+            <div class="step-content">
+                <div class="sub-step">
+                    Lắng nghe yêu cầu và <span class="highlight">thêm món vào app Sapo</span>
+                </div>
+                <div class="sub-step">
+                    <strong>Nhắc lại đơn:</strong>
+                </div>
+                <div class="dialogue">
+                    "Em xin xác nhận lại các món của mình gọi là: ..."
+                </div>
+                <div class="sub-step">
+                    <strong>Thu tiền:</strong>
+                </div>
+                <div class="dialogue">
+                    "Dạ tổng đơn của Anh/Chị là ..., Mình chuyển khoản hay tiền mặt ạ!<br>
+                    Chuyển khoản cho em xin phép chụp lại màn hình chuyển khoản ạ!"
+                </div>
+                <div class="sub-step">
+                    <strong>Nhắc khách đợi:</strong>
+                </div>
+                <div class="dialogue">
+                    "Dạ Anh/Chị đợi em xíu ạ!"
+                </div>
+            </div>
+        </div>
+
+        <div class="step">
+            <span class="step-number">4</span>
+            <span class="step-title">Giao Nước</span>
+            <div class="step-content">
+                <div class="sub-step">
+                    <span class="highlight">Kiểm tra đúng order</span> của khách
+                </div>
+                <div class="sub-step">
+                    Giao nước bằng <span class="highlight">2 tay</span>, hơi cúi người
+                </div>
+                <div class="dialogue">
+                    "Dạ! Em gửi nước ạ! Em cảm ơn!"
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
